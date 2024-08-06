@@ -44,6 +44,14 @@ form {
 	position: absolute;
 	top: 0;
 	border: none;
+	outline: none;
+	
+}
+.input:active, .input:focus{
+	
+	border: none;
+	border-style: none;
+	outline: none;
 }
 
 .input-container {
@@ -61,7 +69,9 @@ form {
 .line-svg {
 	position: absolute;
 	left: 0;
-	bottom: 0;
+	bottom: .5rem;
+	overflow: visible;
+	opacity: .8;
 }
 
 .checkbox-label {
