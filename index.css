@@ -45,6 +45,8 @@ form {
 	top: 0;
 	border: none;
 	outline: none;
+	color: #777474;
+	font-size: 1rem;
 	
 }
 .input:active, .input:focus{
@@ -64,6 +66,7 @@ form {
 	pointer-events: none;
 	padding: 1rem 0;
 	font-size: 1rem;
+	transform-origin: left;
 }
 
 .line-svg {
