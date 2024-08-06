@@ -14,6 +14,7 @@ body {
 }
 
 form {
+	position: relative;
 	min-height: 40dvh;
 	width: 60dvw;
 	background: white;
@@ -91,6 +92,7 @@ form {
 .checkbox {
 	opacity: 0;
 	cursor: pointer;
+	z-index: 3;
 }
 .checkbox-label {
 	padding: 0.5rem;
@@ -111,7 +113,8 @@ form {
 	left: 0;
 	width: 100%;
 	height: 100%;
-	border: 2px solid #c5c5c5;
+	border: 1px solid #c5c5c5;
+
 }
 
 .checkbox-fill {
@@ -119,7 +122,7 @@ form {
 	background-color: #aa86cc;
 	width: 100%;
 	height: 100%;
-	top: 110%;
+	top: 120%;
 }
 
 .tick-mark {
@@ -142,4 +145,30 @@ button {
 	margin-top: 1rem;
 	align-self: flex-start;
 	cursor: pointer;
+}
+
+.tick-line{
+	transform-origin: left;
+}
+
+#character{
+	position: absolute;
+	transform: scale(.7);
+	bottom: -4rem;
+	left: 0;
+	transform-origin: bottom;
+	filter: drop-shadow(-5rem 3rem 1rem  rgba(0, 0, 0, 0.2));
+}
+
+.submitted{
+	position: absolute;
+	pointer-events: none;
+	text-align: center;
+	color: #777474;
+	font-size: 1rem;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%); 
+	opacity: 0;
+	
 }
