@@ -131,3 +131,121 @@ const form = document.querySelector("form");
 		correct: "#aa86cc",
 		wrong: "#FE8c99",
  };
+
+//  Checkbox animation fill
+const checkbox = document.querySelector( ".checkbox" )
+const fill = document.querySelector( ".checkbox-fill" )
+const tick = document.querySelector( ".tick-line" )
+const checkLabel= document.querySelector(".checkbox-label")
+
+	// Get the length of the path
+			var tickPath = document.querySelector(".tick-mark path");
+			var pathLength = tickPath.getTotalLength();
+
+			// Set up the initial state
+			gsap.set(tickPath, {
+				strokeDasharray: pathLength,
+				strokeDashoffset: pathLength,
+			});
+
+const tl2 = gsap.timeline( {
+    defaults: {
+        duration:.5, ease:"Power2.easeOut"
+    }
+})
+
+checkbox.addEventListener( "change", (e) =>
+{
+    console.log(e)
+    if ( e.target.checked )
+    {
+		
+			// Animate the path
+            
+                tl2	.to(fill, {
+                        top: 0,
+                    })
+                    .to(
+                        tickPath,
+                        {
+                            strokeDashoffset: 0,
+                            duration: 0.65,
+                        },
+                        "<50%" 
+                    )
+                    .to(checkLabel, {
+                        color: "#9867c5",
+                    }, "<");
+		} else
+    {
+			tl2.to(fill, {
+				top: "120%",
+				ease: "elastic.in(2,4)",
+				duration: ".3",
+			});
+
+			// Animate the path
+			tl2
+				.to(
+					tickPath,
+					{
+						strokeDashoffset: pathLength,
+						duration: 0.25,
+						ease: "Power2.easeOut",
+					},
+					"<50%"
+				)
+				.to(
+					checkLabel,
+					{
+						color: " #777474",
+					},
+					"<50%"
+				);
+        
+        // 
+		}
+    
+})
+
+
+// animating the character
+gsap.set(".eye", {
+    transformOrigin: "center",
+    scaleY:.3
+})
+gsap.fromTo(".eye", {scaleY:.3}, {scaleY:1, repeat:-1, yoyo:true, duration:.5, repeatDelay:1, ease:"Power2.easeOut" })
+
+gsap.fromTo( "#eyebrow", { y: 0 }, { y: -1, repeat: -1, yoyo: true, duration: .5, repeatDelay: 1, ease: "Power2.easeOut" } )
+
+
+
+// submitted message
+const btn = document.querySelector( "button" )
+const tl3 = gsap.timeline( {
+    defaults:.75, ease:"Power2.easeOut"
+})
+
+
+btn.addEventListener( "click", ( e ) =>
+{
+	e.preventDefault();
+
+	tl3.to(".contact-right, .contact-left", {
+		opacity: "0",
+		y: "30",
+		pointerEvents: "none",
+	})
+
+	tl3.to("form", { scale: 0.8 }, "<")
+    gsap.fromTo( "#message", { opacity: 0, y: -30 }, { opacity: 1, y: 0, delay: .5 } );
+    
+    // hand wave
+
+    gsap.set("#hand", {transformOrigin:"left"})
+	gsap.fromTo(
+		"#hand",
+		{ rotation: 0, y: 0 },
+		{ rotation: -10, y: 2, ease: "elastic(3, .3)", duration: 2, delay: .5 }
+	);
+})
