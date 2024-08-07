@@ -172,3 +172,27 @@ button {
 	opacity: 0;
 	
 }
+
+
+@media screen and (max-width:812px) {
+
+	form{
+		width: 90dvw;
+		min-height: 80dvh;
+		flex-direction: column;
+		padding: 8rem 3rem;
+
+
+	}
+
+	#character{
+		transform: scale(.5) ;
+	}
+
+	.line-svg{
+		width: 100%;
+	}
+
+
+	
+}
